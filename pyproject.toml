@@ -20,7 +20,10 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: Implementation :: CPython",
 ]
-dependencies = []
+dependencies = [
+  "fastapi==0.110.0",
+  "uvicorn[standard]==0.27.1"
+]
 
 [project.urls]
 Documentation = "https://github.com/marcielmj/currency-converter-api#readme"
@@ -33,9 +36,12 @@ path = "src/currency_converter_api/__init__.py"
 [tool.hatch.envs.default]
 python = "3.12"
 
+[tool.hatch.envs.default.scripts]
+server = "uvicorn currency_converter_api.main:app --reload"
+
 [tool.hatch.envs.test]
 dependencies = [
-  "coverage[toml]==7.4.3 ",
+  "coverage[toml]==7.4.3",
   "pytest==8.0.2",
 ]
 
